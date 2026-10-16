@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.DS_Store
+*.pt
+*.wav
+docs/
+rea-skills-dir/
+racing-3D-horsy/

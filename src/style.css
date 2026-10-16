@@ -1,0 +1,223 @@
+/* Global shell styles — mirrors the original page shell (black stage, fixed canvas). */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #000;
+}
+
+body {
+  position: fixed;
+  inset: 0;
+  touch-action: none;
+  overscroll-behavior: none;
+}
+
+#game {
+  position: fixed;
+  display: block;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  -ms-touch-action: none;
+}
+
+/***************FONTS*******************/
+@font-face {
+  font-family: "impactregular";
+  src: url("/fonts/impact-webfont.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ds-digitalbold";
+  src: url("/fonts/ds-digib-webfont.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "motorwerkregular";
+  src: url("/fonts/motorwerkoblique-webfont.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/***************AUTH + ADMIN OVERLAYS*******************/
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2, 8, 23, 0.78);
+  padding: 16px;
+}
+.overlay.hidden {
+  display: none;
+}
+.overlay .card {
+  width: min(420px, 94vw);
+  max-height: 92vh;
+  overflow-y: auto;
+  background: linear-gradient(180deg, #0d2242, #081630);
+  border: 1px solid #2b4d86;
+  border-radius: 14px;
+  padding: 22px 20px;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
+}
+.overlay .card.wide {
+  width: min(640px, 94vw);
+}
+.overlay h1 {
+  font-size: 22px;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.overlay .sub {
+  font-size: 13px;
+  opacity: 0.75;
+  margin-bottom: 14px;
+}
+.overlay input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 8px 0;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #2b4d86;
+  background: #060f24;
+  color: #ffe14d;
+}
+.overlay button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 13px;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 8px;
+  background: #f2c200;
+  color: #1a1a1a;
+  cursor: pointer;
+}
+.overlay button.ghost {
+  background: transparent;
+  border: 1px solid #2b4d86;
+  color: #9fd0ff;
+}
+.overlay .err {
+  min-height: 18px;
+  font-size: 13px;
+  color: #ff7b7b;
+  margin-top: 6px;
+}
+.overlay .hint {
+  font-size: 11px;
+  opacity: 0.6;
+  margin-top: 10px;
+}
+.overlay .house {
+  font-size: 15px;
+  color: #ffe14d;
+  background: #060f24;
+  border: 1px solid #2b4d86;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.overlay .formrow {
+  display: flex;
+  gap: 6px;
+}
+.overlay .formrow input {
+  flex: 1;
+  min-width: 0;
+}
+.overlay .formrow button {
+  width: auto;
+  margin-top: 8px;
+  padding: 12px 14px;
+  flex-shrink: 0;
+}
+.overlay table.users {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.overlay table.users th,
+.overlay table.users td {
+  padding: 7px 4px;
+  border-bottom: 1px solid #1d3461;
+}
+.overlay table.users th {
+  color: #9fd0ff;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+.overlay table.users td .loadrow {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+.overlay table.users td input {
+  width: 76px;
+  margin: 0;
+  padding: 6px;
+  font-size: 13px;
+}
+.overlay table.users td button {
+  width: auto;
+  margin: 0;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+/***************ORIENTATION*******************/
+.orientation-msg-container {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: #000;
+  z-index: 10;
+}
+
+.orientation-msg-text {
+  font-size: 40px;
+  font-family: "Arial";
+  color: #fff;
+  text-align: center;
+  width: 80%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 767px) {
+  .orientation-msg-text {
+    font-size: 30px;
+  }
+}
