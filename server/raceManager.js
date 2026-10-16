@@ -10,11 +10,13 @@ export class RaceManager {
     this.bets = [];
     this.horsesWithBets = new Set();
     this.raceStartTime = 0;
+    this.raceId = null;
     this.results = null;
   }
 
   state() {
     return {
+      raceId: this.raceId,
       raceNumber: this.raceNumber,
       phase: this.phase,
       countdown: Math.max(0, this.countdown),
@@ -72,7 +74,19 @@ export class RaceManager {
     this.phase = "results";
   }
 
+  hydrate(saved) {
+    if (!saved || typeof saved !== "object") return;
+    this.raceId = saved.raceId || null;
+    this.raceNumber = saved.raceNumber || 1;
+    this.phase = saved.phase || "betting";
+    this.countdown = Number(saved.countdown) || 0;
+    this.bets = Array.isArray(saved.bets) ? saved.bets : [];
+    this.results = saved.results ?? null;
+    this.recalcHorses();
+  }
+
   nextRace() {
+    this.raceId = null;
     this.raceNumber++;
     this.phase = "betting";
     this.countdown = 0;

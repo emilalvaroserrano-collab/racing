@@ -6,8 +6,9 @@ A pari-mutuel horse racing game with centralized multi-player betting, built fro
 
 - **Frontend**: Vanilla TypeScript + Canvas 2D (Vite)
 - **Backend**: Node.js + Express + WebSocket (server/)
-- **Auth**: Phone-number login with SHA-256 salted password hashing
-- **Betting**: Centralized pari-mutuel pool via WebSocket
+- **Auth**: Phone-number login. Accounts, balances, and the house vault are stored in Supabase Postgres.
+- **Assets**: Sprites and sounds load from the public Supabase Storage bucket `game-assets`.
+- **Betting**: Centralized pari-mutuel pool via WebSocket. The server snapshots race state to Supabase when `SUPABASE_SERVICE_ROLE_KEY` is set.
 
 ## Quick Start
 
@@ -106,11 +107,16 @@ horse-racing-clone/
     └── download-assets.mjs # Asset download utility
 ```
 
-## Environment Variables
+## Environment
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `PORT` | `3001` | Betting server port |
+The browser uses the public Supabase URL and anon key (already the default in `src/game/supabase.ts`). Copy `.env.example` to `server/.env` and set `SUPABASE_SERVICE_ROLE_KEY` so the betting server can save race state. Never commit the service-role key or the database password.
+
+| Variable | Where | Description |
+|----------|-------|-------------|
+| `VITE_SUPABASE_URL` | Browser | Supabase project URL |
+| `VITE_SUPABASE_ANON_KEY` | Browser | Public anon key |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server only | Service role key for race snapshots |
+| `PORT` | Server | Betting server port (default `3001`) |
 
 ## Features
 

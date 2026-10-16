@@ -1,5 +1,5 @@
 // Admin (bangka) panel: DOM overlay for creating players, loading balance,
-// and watching the house take. Single-device: pool/profiles in localStorage.
+// and watching the house take. Accounts live in Supabase.
 import { CURRENCY } from "../constants";
 import { Game } from "../engine";
 import { Auth } from "../auth";

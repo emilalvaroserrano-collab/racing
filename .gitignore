@@ -6,3 +6,7 @@ dist/
 docs/
 rea-skills-dir/
 racing-3D-horsy/
+.env
+.env.*
+!.env.example
+server/.env

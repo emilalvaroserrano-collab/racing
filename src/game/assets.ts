@@ -1,8 +1,9 @@
 // Asset manifest + loading with progress. Mirrors the original preload list.
 import { CHIP_VALUES } from "./constants";
+import { assetBase } from "./supabase";
 
-const SPR = "sprites/";
-const SND = "sounds/";
+const SPR = assetBase ? `${assetBase}sprites/` : "sprites/";
+const SND = assetBase ? `${assetBase}sounds/` : "sounds/";
 
 export const IMAGE_FILES: string[] = [
   "200x200.jpg",
